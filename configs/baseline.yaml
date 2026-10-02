@@ -1,0 +1,31 @@
+# Every setting for one training run. Copy this file to try a variation.
+
+audio:
+  sample_rate: 16000
+  clip_seconds: null     # null = use the length prepare_data.py measured (covers 99% of clips)
+  n_fft: 400             # 25 ms analysis window
+  hop: 160               # 10 ms step
+  n_mels: 64
+
+data:
+  # Whole speakers held out from training. null = pick automatically from the seed.
+  # Set these by hand once you know the speakers, and include at least one man.
+  val_speakers: null
+  test_speakers: null
+  seed: 0
+
+model:
+  channels: [32, 64, 128, 128]
+
+train:
+  epochs: 40
+  batch_size: 64
+  lr: 0.002
+  weight_decay: 0.01
+  num_workers: 2
+  seed: 0
+
+augment:                 # applied to training clips only
+  speed: [0.9, 1.1]      # resampling factor; shifts pitch and tempo together
+  gain_db: [-6, 6]
+  snr_db: [15, 40]       # added noise, as signal-to-noise ratio

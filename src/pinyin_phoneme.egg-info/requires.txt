@@ -1,0 +1,11 @@
+torch
+numpy
+scipy
+soundfile
+pyyaml
+onnx
+onnxscript
+onnxruntime
+
+[dev]
+pytest
